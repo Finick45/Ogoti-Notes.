@@ -141,7 +141,7 @@
 <body>
   <header>
     <h1>🌍 Geography Notes Book 4</h1>
-    <p>Select a document below to view or download using the viewer toolbar.</p>
+    <p>Select a document below to <b>View first</b> then <b>Download</b> using the toolbar below.</p>
   </header>
 
   <div class="container">
@@ -151,16 +151,15 @@
       <p>Form 4 Geography full notes book.</p>
       <div class="btn-group">
         <button class="view-btn" onclick="viewPDF('https://raw.githubusercontent.com/Finick45/Ogoti-Notes./main/739430776-Geog-Bk4-Ogoti-Senior-1.pdf', 'Geography Book 4 - Ogoti Senior')">View</button>
-        <a class="download-btn" href="https://raw.githubusercontent.com/Finick45/Ogoti-Notes./main/739430776-Geog-Bk4-Ogoti-Senior-1.pdf" download>Download</a>
+        <button class="download-btn" onclick="downloadPDF('https://raw.githubusercontent.com/Finick45/Ogoti-Notes./main/739430776-Geog-Bk4-Ogoti-Senior-1.pdf')">Download</button>
       </div>
     </div>
 
     <!-- PDF Viewer -->
     <div class="viewer" id="pdfViewer">
       <div class="instruction-box">
-        📖 The document is now open below.<br>
-        You can scroll or zoom in the viewer.<br>
-        Click <b>Download</b> above to save the PDF.
+        📖 The document is open below. You can scroll and read.<br>
+        Once satisfied, click <b>Download</b> above to save the file.
       </div>
       <h2 id="pdfTitle"></h2>
       <iframe id="pdfFrame"></iframe>
@@ -172,6 +171,7 @@
   </footer>
 
   <script>
+    // View function: shows PDF in viewer
     function viewPDF(filePath, title) {
       const viewer = document.getElementById('pdfViewer');
       viewer.style.display = 'flex';
@@ -179,7 +179,14 @@
       document.getElementById('pdfFrame').src = filePath;
       window.scrollTo({ top: viewer.offsetTop, behavior: 'smooth' });
     }
+
+    // Download function: downloads file directly
+    function downloadPDF(filePath) {
+      const link = document.createElement('a');
+      link.href = filePath;
+      link.download = filePath.substring(filePath.lastIndexOf('/') + 1);
+      link.click();
+    }
   </script>
 </body>
 </html>
-
